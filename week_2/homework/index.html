@@ -15,5 +15,48 @@
       <div class="header_center">웹게인 관리자 페이지</div>
       <div class="header_right">37기 웹 YB 박원</div>
     </header>
+    <main class="container_main">
+      <section class="card">
+        <h2>검색 필터</h2>
+        <div class="search_filter">
+          <label class="field">
+            <span class="field_label">이름</span>
+            <input placeholder="이름을 입력하세요" />
+          </label>
+          <label class="field">
+            <span class="field_label">영문 이름</span>
+            <input placeholder="영문이름을 입력하세요" />
+          </label>
+          <label class="field">
+            <span class="field_label">깃 허브 </span>
+            <input placeholder="깃허브 아이디를 입력하세요" />
+          </label>
+          <label class="field">
+            <span class="field_label">성별 </span>
+            <select>
+              <option value="all">전체</option>
+              <option value="male">남자</option>
+              <option value="female">여자</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field_label">역할</span>
+            <select>
+              <option value="">전체</option>
+              <option value="OB">OB</option>
+              <option value="YB">YB</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field_label">나이</span>
+            <input type="number" placeholder="나이를 입력하세요" />
+          </label>
+          <div class="filer_btn">
+            <button id="search_btn">검색</button>
+            <button id="reset_btn">초기화</button>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
