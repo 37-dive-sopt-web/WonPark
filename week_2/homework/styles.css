@@ -156,7 +156,7 @@ header {
 /*list*/
 .list_header {
   display: flex;
-  align-items: center;
+
   justify-content: space-between;
 }
 .list_header h3 {
