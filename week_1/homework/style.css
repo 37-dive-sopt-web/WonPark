@@ -189,8 +189,7 @@ main {
   display: grid;
   gap: 8px;
   background: #fff;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   border-radius: 12px;
 }
 .nav_list {
@@ -262,6 +261,7 @@ main {
   display: flex;
   gap: 12px;
   margin-top: 12px;
+  flex-wrap: nowrap;
 }
 .btn_like,
 .btn_dislike {
@@ -326,9 +326,6 @@ main {
   gap: 20px;
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: auto;
-  min-height: fit-content;
-  justify-content: start;
 }
 
 @media (max-width: 1200px) {
@@ -367,14 +364,6 @@ main {
   margin: 0;
   width: 100%;
   height: 200px;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
 }
 .thumb img {
   width: 100%;
@@ -409,7 +398,6 @@ main {
   border: none;
   cursor: pointer;
   padding: 4px;
-  border-radius: 50%;
   transition: transform 0.2s ease;
 }
 
