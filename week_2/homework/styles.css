@@ -91,7 +91,6 @@ header {
 .field select:focus {
   outline: none;
   border-color: #653b1b;
-  box-shadow: 0 0 0 1px rgb(150, 108, 46);
 }
 .field input::placeholder {
   color: #6d645e;
@@ -323,7 +322,7 @@ header {
   height: 42px;
   padding: 0 12px;
   background: #ffffff;
-  border: 1px solid #f5ebe0;
+  border: 1px solid #d6ccc2;
   border-radius: 10px;
   font-size: 14px;
 }
@@ -331,7 +330,7 @@ header {
 #member_form input:focus,
 #member_form select:focus {
   outline: none;
-  border-color: #e3d5ca;
+  border-color: #653b1b;
   box-shadow: 0 0 0 0.5px #f5ebe0;
 }
 
