@@ -5,7 +5,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #edede9;
+  background: #d6ccc2;
   color: #000000;
   font-family: Pretendard;
 }
@@ -94,7 +94,7 @@ header {
   box-shadow: 0 0 0 1px rgb(150, 108, 46);
 }
 .field input::placeholder {
-  color: #998e86;
+  color: #6d645e;
 }
 .filter_btn {
   display: grid;
@@ -227,7 +227,7 @@ header {
 }
 
 .member_table tbody tr:hover {
-  background-color: #f5ebe0;
+  background-color: #edede9;
 }
 
 .member_table th:first-child,
