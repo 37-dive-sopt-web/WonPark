@@ -34,7 +34,7 @@
           <label class="field">
             <span class="field_label">성별 </span>
             <select>
-              <option value="all">전체</option>
+              <option value="all">선택</option>
               <option value="male">남자</option>
               <option value="female">여자</option>
             </select>
@@ -42,7 +42,7 @@
           <label class="field">
             <span class="field_label">역할</span>
             <select>
-              <option value="">전체</option>
+              <option value="all">선택</option>
               <option value="OB">OB</option>
               <option value="YB">YB</option>
             </select>
@@ -72,64 +72,69 @@
         <div class="list_body">
           <table class="member_table">
             <thead>
-                <tr>
-                    <th><input id="check_btn" type="checkbox" /></th>
-                    <th>이름</th>
-                    <th>영문 이름</th>
-                    <th>깃허브</th>
-                    <th>성별</th>
-                    <th>역할</th>
-                    <th>금잔디조</th>
-                    <th>나이</th>
-                </tr>
+              <tr>
+                <th><input id="check_btn" type="checkbox" /></th>
+                <th>이름</th>
+                <th>영문 이름</th>
+                <th>깃허브</th>
+                <th>성별</th>
+                <th>역할</th>
+                <th>금잔디조</th>
+                <th>나이</th>
+              </tr>
             </thead>
             <tbody></tbody>
+          </table>
         </div>
       </section>
     </main>
     <div id="backdrop" class="hidden"></div>
     <div id="modal" class="hidden">
+      <div class="modal-header">
+        <h2>멤버 추가</h2>
         <button id="modal_close">X</button>
-        <h2>멤버 추가 </h2>
-        <form id="member_form">
-            <label class="field">
-                <span>이름</span>
-                <input name="name"  placeholder="이름을 입력하세요" />
-            </label>
-            <label class="field">
-                <span>영문 이름</span>
-                <input name="english_name" placeholder="영문이름을 입력하세요" />
-            </label>
-            <label class="field">
-                <span>깃허브</span>
-                <input name="github" placeholder="깃허브 아이디를 입력하세요" />
-            </label>
-            <label class="field">
-                <span>성별</span>
-                <select name="gender">
-                    <option value="male">남자</option>
-                    <option value="female">여자</option>
-                </select>
-            </label>
-            <label class="field">
-                <span>역할</span>
-                <select name="role">
-                    <option value="OB">OB</option>
-                    <option value="YB">YB</option>
-                </select>
-            </label>
-            <label class="field">
-                <span>금잔디조</span>
-                <input name="gold_jandi" placeholder="금잔디조를 입력하세요(1-9)" />
-            </label>
-            <label class="field">
-                <span>나이</span>
-                <input name="age" placeholder="나이를 입력하세요" />
-            </label>
-            <div class="form_actions">
-                <button type="submit">추가</button>
-            </div>
-        </form>
+      </div>
+      <form id="member_form">
+        <label class="field">
+          <span>이름</span>
+          <input name="name" placeholder="이름을 입력하세요" />
+        </label>
+        <label class="field">
+          <span>영문 이름</span>
+          <input name="english_name" placeholder="영문이름을 입력하세요" />
+        </label>
+        <label class="field">
+          <span>깃허브</span>
+          <input name="github" placeholder="깃허브 아이디를 입력하세요" />
+        </label>
+        <label class="field">
+          <span>성별</span>
+          <select name="gender">
+            <option value="all">선택</option>
+            <option value="male">남자</option>
+            <option value="female">여자</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>역할</span>
+          <select name="role">
+            <option value="all">선택</option>
+            <option value="OB">OB</option>
+            <option value="YB">YB</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>금잔디조</span>
+          <input name="gold_jandi" placeholder="금잔디조를 입력하세요(1-9)" />
+        </label>
+        <label class="field">
+          <span>나이</span>
+          <input name="age" placeholder="나이를 입력하세요" />
+        </label>
+        <div class="form_actions">
+          <button type="submit">추가</button>
+        </div>
+      </form>
     </div>
   </body>
 </html>
