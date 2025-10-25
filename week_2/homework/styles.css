@@ -42,3 +42,112 @@ header {
   justify-self: end;
   font-size: 14px;
 }
+.container_main {
+  max-width: 1080px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+/*card*/
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+}
+.card > h2 {
+  margin: 0 0 14px;
+  font-size: 22px;
+}
+.search_filter {
+  display: grid;
+  gap: 14px;
+}
+.field {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 12px;
+}
+.field_label {
+  font-size: 14px;
+  color: #6b7280;
+}
+.field input,
+.field select {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+.field input::placeholder {
+  color: #9aa3af;
+}
+.filer_btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 6px;
+}
+#search_btn,
+#reset_btn {
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid #79dbc2;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+#search_btn {
+  background: #79dbc2;
+  color: #0d3c33;
+}
+#search_btn:hover {
+  filter: brightness(0.95);
+}
+#reset_btn {
+  background: #ffffff;
+  color: #0d3c33;
+}
+#reset_btn:hover {
+  background: #d7f4ec;
+}
+
+@media (min-width: 900px) {
+  .search_filter {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  /* 이름  */
+  .search_filter > .field:nth-of-type(1) {
+    grid-column: 1 / -1;
+  }
+
+  /* 영문 이름 */
+  .search_filter > .field:nth-of-type(2) {
+    grid-column: 1 / -1;
+  }
+
+  .search_filter > .field:nth-of-type(3) {
+    grid-column: 1 / span 4;
+  }
+  .search_filter > .field:nth-of-type(4) {
+    grid-column: 5 / span 4;
+  }
+  .search_filter > .field:nth-of-type(5) {
+    grid-column: 9 / span 4;
+  }
+  /*  금잔디조 / 나이 */
+  .search_filter > .field:nth-of-type(6) {
+    grid-column: 1 / span 6;
+  }
+  .search_filter > .field:nth-of-type(7) {
+    grid-column: 7 / span 6;
+  }
+  /*적용 / 초기화 버튼*/
+  .filer_btn {
+    grid-column: 1 / -1;
+  }
+}
