@@ -12,7 +12,7 @@ const useSearch = (initialMembers) => {
     const result = initialMembers.filter((member) =>
       member.name.includes(search)
     );
-    setFilteredMembers(result); //업데이트
+    setFilteredMembers(result);
   };
 
   return { search, filteredMembers, handleSearchChange, handleSearch };
