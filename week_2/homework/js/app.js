@@ -93,8 +93,8 @@ resetBtn.addEventListener("click", () => {
     filterGroup.value =
     filterAge.value =
       "";
-  filterGender.value = "all";
-  filterRole.value = "all";
+  filterGender.value = "";
+  filterRole.value = "";
   selectedIds.clear();
   render(members);
 });
@@ -140,8 +140,8 @@ form.addEventListener("submit", (e) => {
     !github ||
     !groupStr ||
     !ageStr ||
-    gender === "all" ||
-    role === "all"
+    !gender ||
+    !role
   ) {
     alert("모든 항목을 채워주세요");
     return;

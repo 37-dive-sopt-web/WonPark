@@ -21,8 +21,8 @@ export function getFilteredMembers(filters, members) {
     if (name && !m.name.toLowerCase().includes(name)) return false;
     if (eng && !m.englishName.toLowerCase().includes(eng)) return false;
     if (gh && !m.github.toLowerCase().includes(gh)) return false;
-    if (gender !== "all" && m.gender !== gender) return false;
-    if (role !== "all" && m.role !== role) return false;
+    if (gender && m.gender !== gender) return false;
+    if (role && m.role !== role) return false;
     if (group && !String(m.codeReviewGroup).includes(group)) return false;
     if (age && !String(m.age).includes(age)) return false;
     return true;
