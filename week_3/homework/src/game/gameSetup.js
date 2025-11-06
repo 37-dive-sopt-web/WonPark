@@ -10,7 +10,7 @@ export function buildDeck(level = 1) {
 
   if (total % 2) throw new Error("카드 개수는 짝수여야 합니다");
   const pairs = total / 2;
-  //짝의 수만큼 배열 생성
+
   const base = Array.from({ length: pairs }, (_, i) => i + 1);
 
   const duplicated = base.flatMap((v) => [
