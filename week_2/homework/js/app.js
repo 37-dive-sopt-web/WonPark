@@ -74,18 +74,16 @@ setupMasterCheckbox(tbody, masterCheckbox, selectedIds, () =>
 
 applyBtn.addEventListener("click", () => {
   selectedIds.clear();
-  render(
-    getFilteredMembers(
-      filterName,
-      filterEnglishName,
-      filterGithub,
-      filterGender,
-      filterRole,
-      filterGroup,
-      filterAge,
-      members
-    )
-  );
+  const filters = {
+    name: filterName.value.trim(),
+    englishName: filterEnglishName.value.trim(),
+    github: filterGithub.value.trim(),
+    gender: filterGender.value,
+    role: filterRole.value,
+    codeReviewGroup: filterGroup.value.trim(),
+    age: filterAge.value.trim(),
+  };
+  render(getFilteredMembers(filters, members));
 });
 
 resetBtn.addEventListener("click", () => {
@@ -108,18 +106,16 @@ deleteBtn.addEventListener("click", () => {
   members = members.filter((m) => !selectedIds.has(m.id));
   localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
   selectedIds.clear();
-  render(
-    getFilteredMembers(
-      filterName,
-      filterEnglishName,
-      filterGithub,
-      filterGender,
-      filterRole,
-      filterGroup,
-      filterAge,
-      members
-    )
-  );
+  const filters = {
+    name: filterName.value.trim(),
+    englishName: filterEnglishName.value.trim(),
+    github: filterGithub.value.trim(),
+    gender: filterGender.value,
+    role: filterRole.value,
+    codeReviewGroup: filterGroup.value.trim(),
+    age: filterAge.value.trim(),
+  };
+  render(getFilteredMembers(filters, members));
 });
 
 addBtn.addEventListener("click", () => openModal(backdrop, modal, form));
@@ -178,18 +174,16 @@ form.addEventListener("submit", (e) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
 
   closeModal(backdrop, modal);
-  render(
-    getFilteredMembers(
-      filterName,
-      filterEnglishName,
-      filterGithub,
-      filterGender,
-      filterRole,
-      filterGroup,
-      filterAge,
-      members
-    )
-  );
+  const filters = {
+    name: filterName.value.trim(),
+    englishName: filterEnglishName.value.trim(),
+    github: filterGithub.value.trim(),
+    gender: filterGender.value,
+    role: filterRole.value,
+    codeReviewGroup: filterGroup.value.trim(),
+    age: filterAge.value.trim(),
+  };
+  render(getFilteredMembers(filters, members));
 });
 
 initStorage();

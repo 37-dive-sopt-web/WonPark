@@ -1,20 +1,21 @@
-export function getFilteredMembers(
-  filterName,
-  filterEnglishName,
-  filterGithub,
-  filterGender,
-  filterRole,
-  filterGroup,
-  filterAge,
-  members
-) {
-  const name = (filterName.value || "").trim().toLowerCase();
-  const eng = (filterEnglishName.value || "").trim().toLowerCase();
-  const gh = (filterGithub.value || "").trim().toLowerCase();
-  const gender = filterGender.value;
-  const role = filterRole.value;
-  const group = (filterGroup.value || "").trim();
-  const age = (filterAge.value || "").trim();
+export function getFilteredMembers(filters, members) {
+  const {
+    name: nameValue,
+    englishName: englishNameValue,
+    github: githubValue,
+    gender: genderValue,
+    role: roleValue,
+    codeReviewGroup: groupValue,
+    age: ageValue,
+  } = filters;
+
+  const name = (nameValue || "").trim().toLowerCase();
+  const eng = (englishNameValue || "").trim().toLowerCase();
+  const gh = (githubValue || "").trim().toLowerCase();
+  const gender = genderValue;
+  const role = roleValue;
+  const group = (groupValue || "").trim();
+  const age = (ageValue || "").trim();
 
   return members.filter((m) => {
     if (name && !m.name.toLowerCase().includes(name)) return false;
