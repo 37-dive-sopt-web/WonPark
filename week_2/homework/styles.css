@@ -25,8 +25,6 @@ header {
 .header_left {
   justify-self: start;
   display: flex;
-  align-items: center;
-  gap: 8px;
 }
 .header_left img {
   width: 28px;
