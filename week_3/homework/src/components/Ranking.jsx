@@ -1,9 +1,16 @@
+import { useState } from "react";
 import useRanking from "../hooks/useRanking";
 import Button from "./Button";
 
 export default function Ranking() {
   const { list, clear } = useRanking();
+  const [refreshKey, setRefreshKey] = useState(0);
   const rows = list();
+
+  const handleClear = () => {
+    clear();
+    setRefreshKey((prev) => prev + 1);
+  };
 
   return (
     <div className="max-w-5xl mx-auto px-6 pb-12">
@@ -11,7 +18,7 @@ export default function Ranking() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">랭킹</h2>
           <div className="flex items-center gap-3">
-            <Button onClick={clear} variant="clear">
+            <Button onClick={handleClear} variant="clear">
               기록 초기화
             </Button>
           </div>

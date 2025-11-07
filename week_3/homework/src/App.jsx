@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Header from "./components/Header";
 import Board from "./components/Board";
 import Panel from "./components/Panel";
@@ -16,6 +16,7 @@ import { STATUS } from "./game/rules";
 
 export default function App() {
   const [tab, setTab] = useState("game");
+  const hasRecordedRef = useRef(false);
 
   const {
     level,
@@ -51,6 +52,7 @@ export default function App() {
 
   useEffect(() => {
     reset(level);
+    hasRecordedRef.current = false;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -59,12 +61,19 @@ export default function App() {
   }, [isRunning, isTimeUp, setStatus]);
 
   useEffect(() => {
+    if (status === STATUS.IDLE || status === STATUS.READY) {
+      hasRecordedRef.current = false;
+    }
+  }, [status]);
+
+  useEffect(() => {
     let interval = null;
     let timeout = null;
 
-    if (status === STATUS.WIN) {
+    if (status === STATUS.WIN && !hasRecordedRef.current) {
       const elapsed = LEVELS[level].limit - timeRemaining;
       add({ level, seconds: elapsed });
+      hasRecordedRef.current = true;
 
       interval = fireWinConfetti(3000);
     }
@@ -72,6 +81,7 @@ export default function App() {
       timeout = setTimeout(() => {
         reset(level);
         resetTimer();
+        hasRecordedRef.current = false;
       }, 3000);
     }
 
