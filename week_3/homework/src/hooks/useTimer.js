@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-/** requestAnimationFrame 기반 감소 타이머 */
 export default function useTimer(initialSeconds, isRunning) {
   const [timeRemaining, setTimeRemaining] = useState(initialSeconds);
   const animationFrameId = useRef();

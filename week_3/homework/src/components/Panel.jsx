@@ -56,9 +56,9 @@ export default function Panel({
         {history.length === 0 && (
           <div className="text-gray-400">아직 뒤집은 카드가 없어요</div>
         )}
-        {history.map((h, i) => (
+        {history.map((h) => (
           <div
-            key={i}
+            key={h.id}
             className="flex justify-between items-center px-3 py-2 bg-white rounded-lg border border-gray-200"
           >
             <span

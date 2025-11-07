@@ -35,7 +35,7 @@ export default function Ranking() {
               </tr>
             ) : (
               rows.map((r, i) => (
-                <tr key={i} className="border-t">
+                <tr key={`${r.at}-${r.level}`} className="border-t">
                   <td className="p-3">{i + 1}</td>
                   <td className="p-3">Level {r.level}</td>
                   <td className="p-3">{r.seconds.toFixed(2)}</td>

@@ -1,4 +1,3 @@
-// src/hooks/useRanking.js
 const STORAGE_KEY = "memorygame.records";
 
 export default function useRanking() {

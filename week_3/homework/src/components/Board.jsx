@@ -1,17 +1,21 @@
+import { useMemo } from "react";
 import Card from "./Card";
 
 export default function Board({ cards, cols, rows, openIds, matched, onFlip }) {
   const GAP_PX = 12;
   const BOARD_PADDING = 16;
 
-  const cardSizePx =
-    rows === 4 && cols === 4
-      ? 120
-      : rows === 4 && cols === 6
-      ? 92
-      : rows === 6 && cols === 6
-      ? 84
-      : 100;
+  const cardSizePx = useMemo(
+    () =>
+      rows === 4 && cols === 4
+        ? 120
+        : rows === 4 && cols === 6
+        ? 92
+        : rows === 6 && cols === 6
+        ? 84
+        : 100,
+    [rows, cols]
+  );
 
   return (
     <div className="flex justify-center items-center">

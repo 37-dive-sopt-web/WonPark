@@ -9,6 +9,7 @@ import Button from "./components/Button";
 import useGameLogic from "./hooks/useGameLogic";
 import useTimer from "./hooks/useTimer";
 import useRanking from "./hooks/useRanking";
+import { useMatchConfetti, fireWinConfetti } from "./hooks/useConfetti";
 
 import { LEVELS } from "./game/gameSetup";
 import { STATUS } from "./game/rules";
@@ -46,8 +47,11 @@ export default function App() {
 
   const { add } = useRanking();
 
+  useMatchConfetti(matched.size);
+
   useEffect(() => {
     reset(level);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -55,18 +59,27 @@ export default function App() {
   }, [isRunning, isTimeUp, setStatus]);
 
   useEffect(() => {
+    let interval = null;
+    let timeout = null;
+
     if (status === STATUS.WIN) {
       const elapsed = LEVELS[level].limit - timeRemaining;
       add({ level, seconds: elapsed });
+
+      interval = fireWinConfetti(3000);
     }
     if (status === STATUS.WIN || status === STATUS.LOSE) {
-      const t = setTimeout(() => {
+      timeout = setTimeout(() => {
         reset(level);
         resetTimer();
       }, 3000);
-      return () => clearTimeout(t);
     }
-  }, [status]);
+
+    return () => {
+      if (interval) clearInterval(interval);
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [status, level, timeRemaining, add, reset, resetTimer]);
 
   return (
     <div className="min-h-screen bg-pink-50">
@@ -122,6 +135,7 @@ export default function App() {
                 firstValue: h.a,
                 secondValue: h.b,
                 isMatch: h.ok,
+                id: h.ts,
               }))}
             />
           </div>
@@ -131,14 +145,7 @@ export default function App() {
             open={status === STATUS.WIN}
             title="게임 클리어!"
             actions={
-              <>
-                <button
-                  className="px-3 py-2 rounded-lg bg-pink-600 text-white"
-                  onClick={() => setTab("ranking")}
-                >
-                  랭킹 보러가기
-                </button>
-              </>
+              <Button onClick={() => setTab("ranking")}>랭킹 보러가기</Button>
             }
           >
             성공입니다. 3초 후 자동으로 새 게임을 시작합니다.
