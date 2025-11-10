@@ -26,7 +26,7 @@ export const themeClass = createTheme(vars, {
   color: {
     bg: "#FFE5EC",
 
-    surface: "#FFFFFF",
+    surface: "#F9F5F6",
 
     primary: "#FF8FAB",
 
