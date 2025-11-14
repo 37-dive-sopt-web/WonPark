@@ -49,7 +49,6 @@ export const useSignupForm = (): UseSignupFormReturn => {
   const [age, setAgeState] = useState("");
   const [submitError, setSubmitError] = useState("");
 
-  // --- validators ---
   const validateUsername = (value: string): string => {
     if (!value) return "아이디를 입력해주세요.";
     if (value.length > 50) return "아이디는 50자 이하여야 합니다.";
@@ -71,13 +70,11 @@ export const useSignupForm = (): UseSignupFormReturn => {
   };
 
   const usernameErr = validateUsername(username);
-  const passwordErr = validatePassword(password, passwordCheck);
 
   const canNextFromId = !usernameErr;
-  const canNextFromPassword = !passwordErr;
+  const canNextFromPassword = true;
   const canSubmit = !!name && !!email && !!age;
 
-  // --- step handlers ---
   const goNextFromId = () => {
     const msg = validateUsername(username);
     setUsernameError(msg);
@@ -90,7 +87,6 @@ export const useSignupForm = (): UseSignupFormReturn => {
     if (!msg) setStep(3);
   };
 
-  // --- submit ---
   const submit = async (): Promise<boolean> => {
     setSubmitError("");
     if (!canSubmit) {
@@ -110,7 +106,7 @@ export const useSignupForm = (): UseSignupFormReturn => {
       await api.post("/api/v1/users", payload);
       return true;
     } catch {
-      setSubmitError("회원가입에 실패했습니다. 다시 시도해주세요.");
+      setSubmitError("회원가입에 실패했습니다.");
       return false;
     }
   };
@@ -134,7 +130,7 @@ export const useSignupForm = (): UseSignupFormReturn => {
     email,
     age,
     usernameError,
-    passwordError: passwordErr || passwordError,
+    passwordError,
     submitError,
     setUsername,
     setPassword,
