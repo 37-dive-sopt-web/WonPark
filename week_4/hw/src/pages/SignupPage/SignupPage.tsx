@@ -83,8 +83,17 @@ export const SignupPage = () => {
         )}
         {f.step === 3 && (
           <>
-            <label className={styles.label}>이메일</label>
+            <label className={styles.label}>이름</label>
+            <input
+              id="name"
+              type="text"
+              className={styles.input}
+              placeholder="이름을 입력해주세요"
+              value={f.name}
+              onChange={(e) => f.setName(e.target.value)}
+            />
 
+            <label className={styles.label}>이메일</label>
             <input
               id="email"
               type="email"
