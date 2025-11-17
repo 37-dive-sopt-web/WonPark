@@ -1,5 +1,5 @@
 // src/hooks/useSignupForm.ts
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { SignupRequest } from "../api/client.ts";
 import { api } from "../api/client";
 
@@ -70,9 +70,14 @@ export const useSignupForm = (): UseSignupFormReturn => {
   };
 
   const usernameErr = validateUsername(username);
+  const passwordErr = validatePassword(password, passwordCheck);
+
+  useEffect(() => {
+    setPasswordError(validatePassword(password, passwordCheck));
+  }, [password, passwordCheck]);
 
   const canNextFromId = !usernameErr;
-  const canNextFromPassword = true;
+  const canNextFromPassword = !passwordErr;
   const canSubmit = !!name && !!email && !!age;
 
   const goNextFromId = () => {
