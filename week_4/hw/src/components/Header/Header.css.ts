@@ -1,4 +1,4 @@
-import { style, keyframes } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/theme.css.ts";
 
 export const container = style({
@@ -32,12 +32,26 @@ export const tab = style({
   fontSize: 14,
   paddingBottom: 2,
   borderBottom: "2px solid transparent",
+  color: "#fff",
+  textDecoration: "none",
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  padding: 3,
+  outline: "none",
+});
+
+export const tabActive = style({
+  borderBottom: "2px solid #fff",
 });
 
 export const logout = style({
   background: "transparent",
   color: "#fff",
   fontSize: 14,
+  outline: "none",
+  border: "none",
+  cursor: "pointer",
 });
 
 export const menuBtn = style({
@@ -52,11 +66,6 @@ export const menuBtn = style({
   },
 });
 
-export const dropdown = keyframes({
-  from: { opacity: 0, transform: "translateY(-8px)" },
-  to: { opacity: 1, transform: "translateY(0)" },
-});
-
 export const mobileMenu = style({
   position: "absolute",
   right: 16,
@@ -65,12 +74,21 @@ export const mobileMenu = style({
   color: vars.color.text,
   padding: "12px 16px",
   borderRadius: 10,
-  boxShadow: "0 10px 25px rgba(0,0,0,0.16)",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
   display: "flex",
   flexDirection: "column",
   gap: 10,
-  animationName: dropdown,
-  animationDuration: "0.18s",
-  animationTimingFunction: "ease-out",
   zIndex: 50,
+});
+
+export const mobileMenuItem = style({
+  fontSize: 14,
+  color: vars.color.text,
+  textDecoration: "none",
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  textAlign: "left",
+  padding: 0,
+  outline: "none",
 });
