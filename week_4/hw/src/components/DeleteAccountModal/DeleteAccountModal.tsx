@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../api/client";
 import { useAuth } from "../../context/AuthContext";
@@ -17,10 +17,32 @@ export const DeleteAccountModal = ({
   const { userId, logout } = useAuth();
   const nav = useNavigate();
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && !isDeleting) {
+        e.preventDefault();
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isOpen, isDeleting, onClose]);
+
   if (!isOpen) return null;
 
   const handleCancel = () => {
-    onClose();
+    if (!isDeleting) {
+      onClose();
+    }
+  };
+
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget && !isDeleting) {
+      onClose();
+    }
   };
 
   const handleDelete = async () => {
@@ -42,8 +64,8 @@ export const DeleteAccountModal = ({
   };
 
   return (
-    <div className={styles.overlay}>
-      <div className={styles.modal}>
+    <div className={styles.overlay} onClick={handleOverlayClick}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <h2 className={styles.title}>정말 탈퇴하시겠어요?</h2>
         <p className={styles.message}>탈퇴 후에는 모든 정보가 삭제돼요</p>
         <div className={styles.buttonGroup}>
@@ -66,4 +88,3 @@ export const DeleteAccountModal = ({
     </div>
   );
 };
-
