@@ -1,37 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as styles from "./Header.css";
-import { api } from "../../api/client";
-import type { User } from "../../api/client";
 import { useAuth } from "../../context/AuthContext";
 import { DeleteAccountModal } from "../DeleteAccountModal/DeleteAccountModal";
+import { useMyInfo } from "../../hooks/useMyInfo";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const { userId, logout } = useAuth();
-  const [user, setUser] = useState<User | null>(null);
+  const { logout } = useAuth();
+  const { user } = useMyInfo();
 
   const loc = useLocation();
   const nav = useNavigate();
-
-  useEffect(() => {
-    if (!userId) return;
-
-    api
-      .get<User>(`/api/v1/users/${userId}`)
-      .then((res) => {
-        const responseData = res.data as { data?: User } | User;
-        const userData =
-          "data" in responseData && responseData.data
-            ? responseData.data
-            : (responseData as User);
-        setUser(userData);
-      })
-      .catch(() => {
-        setUser(null);
-      });
-  }, [userId]);
 
   const handleLogout = () => {
     logout();

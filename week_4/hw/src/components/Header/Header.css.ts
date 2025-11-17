@@ -88,7 +88,6 @@ export const mobileMenuItem = style({
   background: "none",
   border: "none",
   cursor: "pointer",
-  textAlign: "left",
   padding: 0,
   outline: "none",
 });
