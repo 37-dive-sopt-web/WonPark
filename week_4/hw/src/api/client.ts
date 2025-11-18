@@ -9,11 +9,13 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
-  id: number;
-  username: string;
-  name: string;
-  email: string;
-  age: number;
+  success: boolean;
+  code: string;
+  message: string;
+  data: {
+    userId: number;
+    message: string;
+  };
 }
 
 export interface User {
@@ -22,6 +24,7 @@ export interface User {
   name: string;
   email: string;
   age: number;
+  status?: string;
 }
 
 export interface SignupRequest {

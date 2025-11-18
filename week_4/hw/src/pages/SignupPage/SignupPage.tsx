@@ -19,6 +19,7 @@ export const SignupPage = () => {
   return (
     <PageLayout>
       <form onSubmit={handleSubmit}>
+        <h1 className={styles.title}>회원가입</h1>
         <div className={styles.step}>Step {f.step} / 3</div>
 
         {f.step === 1 && (

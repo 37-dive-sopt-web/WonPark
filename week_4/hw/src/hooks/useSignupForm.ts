@@ -1,5 +1,5 @@
 // src/hooks/useSignupForm.ts
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { SignupRequest } from "../api/client.ts";
 import { api } from "../api/client";
 
@@ -38,11 +38,9 @@ export const useSignupForm = (): UseSignupFormReturn => {
   const [step, setStep] = useState<Step>(1);
 
   const [username, setUsernameState] = useState("");
-  const [usernameError, setUsernameError] = useState("");
 
   const [password, setPasswordState] = useState("");
   const [passwordCheck, setPasswordCheckState] = useState("");
-  const [passwordError, setPasswordError] = useState("");
 
   const [name, setNameState] = useState("");
   const [email, setEmailState] = useState("");
@@ -72,23 +70,17 @@ export const useSignupForm = (): UseSignupFormReturn => {
   const usernameErr = validateUsername(username);
   const passwordErr = validatePassword(password, passwordCheck);
 
-  useEffect(() => {
-    setPasswordError(validatePassword(password, passwordCheck));
-  }, [password, passwordCheck]);
-
   const canNextFromId = !usernameErr;
   const canNextFromPassword = !passwordErr;
   const canSubmit = !!name && !!email && !!age;
 
   const goNextFromId = () => {
     const msg = validateUsername(username);
-    setUsernameError(msg);
     if (!msg) setStep(2);
   };
 
   const goNextFromPassword = () => {
     const msg = validatePassword(password, passwordCheck);
-    setPasswordError(msg);
     if (!msg) setStep(3);
   };
 
@@ -118,7 +110,6 @@ export const useSignupForm = (): UseSignupFormReturn => {
 
   const setUsername = (v: string) => {
     setUsernameState(v);
-    setUsernameError(validateUsername(v));
   };
   const setPassword = (v: string) => setPasswordState(v);
   const setPasswordCheck = (v: string) => setPasswordCheckState(v);
@@ -134,8 +125,8 @@ export const useSignupForm = (): UseSignupFormReturn => {
     name,
     email,
     age,
-    usernameError,
-    passwordError,
+    usernameError: usernameErr,
+    passwordError: passwordErr,
     submitError,
     setUsername,
     setPassword,

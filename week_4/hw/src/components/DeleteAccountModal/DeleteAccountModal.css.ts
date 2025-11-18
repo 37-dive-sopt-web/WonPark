@@ -19,8 +19,7 @@ export const modal = style({
   padding: "32px 24px",
   width: "90%",
   maxWidth: 400,
-  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.15)",
-  outline: "none",
+  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
 });
 
 export const title = style({
@@ -54,8 +53,6 @@ export const cancelButton = style({
   fontSize: 14,
   fontWeight: 600,
   cursor: "pointer",
-  transition: "all 0.2s",
-  outline: "none",
   selectors: {
     "&:hover:not(:disabled)": {
       backgroundColor: "#f5f5f5",
@@ -77,8 +74,6 @@ export const deleteButton = style({
   fontSize: 14,
   fontWeight: 600,
   cursor: "pointer",
-  transition: "all 0.2s",
-  outline: "none",
   selectors: {
     "&:hover:not(:disabled)": {
       backgroundColor: "#dc2626",

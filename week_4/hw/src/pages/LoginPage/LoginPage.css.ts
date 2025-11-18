@@ -29,7 +29,6 @@ export const button = style({
   color: vars.color.text,
   fontWeight: 600,
   fontSize: 15,
-  transition: "background 0.2s ease",
   selectors: {
     "&:disabled": {
       backgroundColor: "#cfe7e2",

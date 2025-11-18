@@ -7,7 +7,6 @@ export const wrap = style({
   padding: 24,
   backgroundColor: vars.color.surface,
   borderRadius: vars.radius.lg,
-  boxShadow: vars.shadow.card,
 });
 
 export const input = style({
@@ -22,12 +21,12 @@ export const button = style({
   width: "100%",
   padding: 10,
   borderRadius: vars.radius.pill,
-  backgroundColor: vars.color.primary,
+  backgroundColor: vars.color.primaryHover,
   color: "#fff",
   fontWeight: 600,
   selectors: {
     "&:disabled": {
-      backgroundColor: "#cfe7e2",
+      backgroundColor: vars.color.primary,
       cursor: "not-allowed",
     },
   },

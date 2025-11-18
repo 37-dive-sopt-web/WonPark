@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../api/client";
 import { useAuth } from "../../context/AuthContext";
 import * as styles from "./DeleteAccountModal.css.ts";
+import type { AxiosError } from "axios";
 
 interface DeleteAccountModalProps {
   isOpen: boolean;
@@ -22,14 +23,13 @@ export const DeleteAccountModal = ({
 
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && !isDeleting) {
-        e.preventDefault();
         onClose();
       }
     };
 
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
-  }, [isOpen, isDeleting, onClose]);
+  }, [isOpen, isDeleting]);
 
   if (!isOpen) return null;
 
@@ -54,9 +54,11 @@ export const DeleteAccountModal = ({
       alert("회원탈퇴가 완료되었습니다.");
       logout();
       nav("/login");
-    } catch (err: any) {
+    } catch (err) {
+      const axiosError = err as AxiosError<{ message?: string }>;
       const errorMessage =
-        err.response?.data?.message || "회원탈퇴 중 오류가 발생했습니다.";
+        axiosError.response?.data?.message ||
+        "회원탈퇴 중 오류가 발생했습니다.";
       alert(errorMessage);
     } finally {
       setIsDeleting(false);

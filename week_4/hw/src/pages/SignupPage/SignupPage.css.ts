@@ -31,15 +31,15 @@ export const button = style({
   width: "100%",
   padding: "14px 0",
   borderRadius: vars.radius.pill,
-  backgroundColor: vars.color.primary,
+
+  backgroundColor: vars.color.primaryHover,
   color: vars.color.text,
   fontWeight: 600,
   fontSize: 15,
   marginTop: 4,
-  transition: "background 0.2s ease",
   selectors: {
     "&:disabled": {
-      backgroundColor: vars.color.primaryHover,
+      backgroundColor: vars.color.primary,
       cursor: "not-allowed",
     },
     "&:not(:disabled):hover": {
@@ -51,7 +51,7 @@ export const button = style({
 export const error = style({
   fontSize: 12,
   color: vars.color.danger,
-  marginTop: -6,
+  marginTop: 6,
   marginBottom: 10,
 });
 
@@ -59,4 +59,5 @@ export const helper = style({
   marginTop: 14,
   fontSize: 13,
   textAlign: "center",
+  cursor: "pointer",
 });

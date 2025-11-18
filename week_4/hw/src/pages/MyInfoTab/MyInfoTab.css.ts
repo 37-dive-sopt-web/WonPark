@@ -7,7 +7,6 @@ export const wrap = style({
   padding: 24,
   backgroundColor: vars.color.surface,
   borderRadius: vars.radius.lg,
-  boxShadow: vars.shadow.card,
 });
 
 export const label = style({
@@ -30,4 +29,16 @@ export const button = style({
   backgroundColor: vars.color.primary,
   color: "#fff",
   fontWeight: 600,
+  cursor: "pointer",
+  border: "none",
+  width: "100%",
+  selectors: {
+    "&:disabled": {
+      opacity: 0.5,
+      cursor: "not-allowed",
+    },
+    "&:not(:disabled):hover": {
+      opacity: 0.9,
+    },
+  },
 });

@@ -2,6 +2,7 @@ import * as styles from "./UserLookupTab.css.ts";
 import { useState } from "react";
 import { api } from "../../api/client";
 import type { User } from "../../api/client";
+import type { AxiosError } from "axios";
 
 export const UserLookupTab = () => {
   const [id, setId] = useState("");
@@ -20,22 +21,28 @@ export const UserLookupTab = () => {
 
     try {
       const res = await api.get<User>(`/api/v1/users/${userId}`);
-      const userData = (res.data as any).data || res.data;
+
+      const responseData = res.data as { data?: User } | User;
+      const userData =
+        "data" in responseData && responseData.data
+          ? responseData.data
+          : (responseData as User);
 
       if (userData && userData.id) {
         setUser(userData);
       } else {
         setError("사용자를 찾을 수 없습니다.");
       }
-    } catch (err: any) {
-      if (err.response?.status === 404) {
+    } catch (err) {
+      const axiosError = err as AxiosError;
+      if (axiosError.response?.status === 404) {
         setError(`회원 ID ${id}를 찾을 수 없습니다.`);
-      } else if (err.response?.status === 403) {
+      } else if (axiosError.response?.status === 403) {
         setError("접근 권한이 없습니다.");
       } else {
         setError(
           `조회 중 오류가 발생했습니다. (${
-            err.response?.status || "알 수 없음"
+            axiosError.response?.status || "알 수 없음"
           })`
         );
       }

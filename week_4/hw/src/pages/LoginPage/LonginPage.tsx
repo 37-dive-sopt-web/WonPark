@@ -27,7 +27,14 @@ export const LoginPage = () => {
     setLoading(true);
     try {
       const res = await api.post<LoginResponse>("/api/v1/auth/login", form);
-      setUserId(res.data.id);
+      const userId = res.data.data?.userId;
+
+      if (!userId) {
+        setError("로그인 응답 형식이 올바르지 않습니다.");
+        return;
+      }
+
+      setUserId(userId);
       nav("/mypage/info");
     } catch {
       setError("아이디 또는 비밀번호가 올바르지 않습니다.");
